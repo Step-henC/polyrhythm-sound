@@ -7,8 +7,11 @@ function playSound(frequency = 440, duration=2) {
   osc.connect(envelope)
   osc.connect(audioCtx.destination); //connect to speakers
 
+  osc.type = 'sine';
+  envelope.gain.maxValue = 0.0
+  
   envelope.gain.setValueAtTime(0, audioCtx.currentTime);
-  envelope.gain.linearRampToValueAtTime(0.05, audioCtx.currentTime + 0.05); //init w/ low value so as not to exceed max vol
+  envelope.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05); //init w/ low value so as not to exceed max vol
   envelope.gain.linearRampToValueAtTime(0, audioCtx.currentTime + duration);
 
 
